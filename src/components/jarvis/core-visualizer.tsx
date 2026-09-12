@@ -24,8 +24,8 @@ export function CoreVisualizer({ compact = false }: { compact?: boolean }) {
   return (
     <div
       className={cn(
-        "relative mx-auto flex aspect-square items-center justify-center",
-        compact ? "w-40" : "w-56 sm:w-72 lg:w-80",
+        "relative mx-auto flex aspect-square items-center justify-center overflow-hidden rounded-full",
+        compact ? "w-36" : "w-56 sm:w-72 lg:w-80",
         state === "OFFLINE" && "opacity-60",
       )}
       role="img"
@@ -112,7 +112,7 @@ export function CoreVisualizer({ compact = false }: { compact?: boolean }) {
       </div>
 
       {!compact && (
-        <span className="absolute -bottom-6 font-display text-xs tracking-[0.35em] text-steel uppercase">
+        <span className="absolute bottom-1 font-display text-xs tracking-[0.35em] text-steel uppercase">
           {assistantName}
         </span>
       )}
