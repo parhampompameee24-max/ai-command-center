@@ -58,6 +58,7 @@ export function startRecognition(opts: {
     let interim = "";
     for (let i = e.resultIndex; i < e.results.length; i += 1) {
       const res = e.results[i];
+      if (!res) continue;
       const text = res[0]?.transcript ?? "";
       if (res.isFinal) opts.onFinal(text.trim());
       else interim += text;

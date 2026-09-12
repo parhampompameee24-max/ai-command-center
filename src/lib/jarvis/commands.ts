@@ -80,7 +80,8 @@ export const commands: CommandDef[] = [
     usage: "memory [search|add] ...",
     description: "جست‌وجو یا افزودن به حافظه",
     run: (args) => {
-      const [sub, ...rest] = args;
+      const sub = args[0];
+      const rest = args.slice(1);
       if (sub === "add") {
         if (!rest.length) return "متن یادداشت را بنویسید: memory add ...";
         remember("note", rest.join(" "));
@@ -102,8 +103,8 @@ export const commands: CommandDef[] = [
     run: (args) => {
       const s = settingsStore.get();
       if (!args.length) return JSON.stringify(s, null, 2);
-      const [key, ...rest] = args;
-      const value = rest.join(" ");
+      const key = args[0] ?? "";
+      const value = args.slice(1).join(" ");
       if (!(key in s)) return `کلید ناشناخته: ${key}`;
       const current = (s as unknown as Record<string, unknown>)[key];
       let parsed: unknown = value;
@@ -119,9 +120,9 @@ export const commands: CommandDef[] = [
     usage: "voice [rate|pitch] <عدد>",
     description: "تنظیم سرعت یا زیر و بمی گفتار",
     run: (args) => {
-      const [key, value] = args;
+      const key = args[0];
       if (key !== "rate" && key !== "pitch") return "استفاده: voice rate 1.2";
-      const n = Number(value);
+      const n = Number(args[1]);
       if (!Number.isFinite(n)) return "عدد معتبر نیست.";
       updateSettings({ [key]: Math.min(2, Math.max(0.5, n)) } as never);
       return `${key} = ${n}`;
@@ -204,7 +205,8 @@ export async function runCommand(
 ): Promise<CommandResult & { needsConfirm?: boolean }> {
   const parts = input.trim().split(/\s+/).filter(Boolean);
   if (!parts.length) return { ok: false, output: "", tier: "PUBLIC" };
-  const [name, ...args] = parts;
+  const name = parts[0] ?? "";
+  const args = parts.slice(1);
   const cmd = findCommand(name);
 
   if (!cmd) {
