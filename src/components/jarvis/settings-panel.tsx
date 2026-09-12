@@ -119,7 +119,7 @@ export function SettingsPanel() {
             min={0.5}
             max={2}
             step={0.1}
-            onValueChange={([v]) => updateSettings({ rate: v })}
+            onValueChange={(v) => updateSettings({ rate: v[0] ?? 1 })}
           />
         </div>
         <div className="space-y-2">
@@ -129,7 +129,7 @@ export function SettingsPanel() {
             min={0.5}
             max={2}
             step={0.1}
-            onValueChange={([v]) => updateSettings({ pitch: v })}
+            onValueChange={(v) => updateSettings({ pitch: v[0] ?? 1 })}
           />
         </div>
       </HudPanel>

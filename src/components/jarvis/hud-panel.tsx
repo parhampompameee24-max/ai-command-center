@@ -9,12 +9,12 @@ export function HudPanel({
   className,
   bodyClassName,
 }: {
-  title?: string;
-  subtitle?: string;
-  actions?: ReactNode;
+  title?: string | undefined;
+  subtitle?: string | undefined;
+  actions?: ReactNode | undefined;
   children: ReactNode;
-  className?: string;
-  bodyClassName?: string;
+  className?: string | undefined;
+  bodyClassName?: string | undefined;
 }) {
   return (
     <section className={cn("hud-panel hud-corners flex flex-col", className)}>

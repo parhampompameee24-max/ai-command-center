@@ -109,14 +109,14 @@ export function ConsolePanel() {
                 const next = Math.min(cursor + 1, history.length - 1);
                 if (next >= 0) {
                   setCursor(next);
-                  setValue(history[next]);
+                  setValue(history[next] ?? "");
                 }
               }
               if (e.key === "ArrowDown") {
                 e.preventDefault();
                 const next = cursor - 1;
                 setCursor(next);
-                setValue(next >= 0 ? history[next] : "");
+                setValue(next >= 0 ? (history[next] ?? "") : "");
               }
             }}
             placeholder="help"
@@ -135,7 +135,7 @@ export function ConsolePanel() {
             key={c.name}
             type="button"
             onClick={() => {
-              setValue(c.usage.split(" ")[0]);
+              setValue(c.usage.split(" ")[0] ?? c.name);
               inputRef.current?.focus();
             }}
             className="w-full rounded-md border border-border/60 px-3 py-2 text-start transition-colors hover:border-primary/50"
