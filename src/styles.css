@@ -121,5 +121,123 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    background-image:
+      radial-gradient(circle at 20% 0%, oklch(0.74 0.168 58 / 8%), transparent 45%),
+      radial-gradient(circle at 85% 100%, oklch(0.62 0.014 245 / 10%), transparent 50%);
+    background-attachment: fixed;
   }
 }
+
+@utility hud-panel {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    oklch(0.21 0.01 62 / 85%),
+    oklch(0.17 0.008 60 / 85%)
+  );
+  border: 1px solid var(--hud);
+  border-radius: var(--radius);
+  backdrop-filter: blur(6px);
+}
+
+@utility hud-corners {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--hud-strong);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  &::before {
+    top: -1px;
+    inset-inline-start: -1px;
+    border-inline-end: none;
+    border-bottom: none;
+  }
+  &::after {
+    bottom: -1px;
+    inset-inline-end: -1px;
+    border-inline-start: none;
+    border-top: none;
+  }
+}
+
+@utility hud-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    oklch(1 0 0 / 3%) 0px,
+    oklch(1 0 0 / 3%) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+@utility text-glow {
+  text-shadow: 0 0 12px oklch(0.74 0.168 58 / 55%);
+}
+
+@keyframes jarvis-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes jarvis-spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes jarvis-pulse-ring {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.95;
+  }
+}
+
+@keyframes jarvis-bar {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes jarvis-sweep {
+  to {
+    transform: translateY(320%);
+  }
+}
+
+.animate-spin-slow {
+  animation: jarvis-spin-slow 18s linear infinite;
+}
+.animate-spin-reverse {
+  animation: jarvis-spin-reverse 26s linear infinite;
+}
+.animate-pulse-ring {
+  animation: jarvis-pulse-ring 3.2s ease-in-out infinite;
+}
+.animate-sweep {
+  animation: jarvis-sweep 4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-spin-reverse,
+  .animate-pulse-ring,
+  .animate-sweep {
+    animation: none;
+  }
+}
+
