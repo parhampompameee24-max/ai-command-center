@@ -24,9 +24,7 @@ interface SpeechRecognitionLike {
 
 interface SpeechRecognitionEventLike {
   resultIndex: number;
-  results: ArrayLike<
-    ArrayLike<{ transcript: string }> & { isFinal: boolean }
-  >;
+  results: ArrayLike<ArrayLike<{ transcript: string }> & { isFinal: boolean }>;
 }
 
 export function recognitionSupported() {

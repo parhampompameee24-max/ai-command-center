@@ -28,9 +28,7 @@ export function SettingsPanel() {
   useEffect(() => {
     if (!synthesisSupported()) return;
     const load = () =>
-      setVoices(
-        listVoices().map((v) => ({ uri: v.voiceURI, label: `${v.name} — ${v.lang}` })),
-      );
+      setVoices(listVoices().map((v) => ({ uri: v.voiceURI, label: `${v.name} — ${v.lang}` })));
     load();
     window.speechSynthesis.addEventListener("voiceschanged", load);
     return () => window.speechSynthesis.removeEventListener("voiceschanged", load);

@@ -8,11 +8,7 @@ export function CoreVisualizer({ compact = false }: { compact?: boolean }) {
   const { assistantName } = useStore(settingsStore);
 
   const tone =
-    state === "ERROR"
-      ? "text-destructive"
-      : state === "OFFLINE"
-        ? "text-steel"
-        : "text-primary";
+    state === "ERROR" ? "text-destructive" : state === "OFFLINE" ? "text-steel" : "text-primary";
 
   const ringColor =
     state === "ERROR"
@@ -106,9 +102,7 @@ export function CoreVisualizer({ compact = false }: { compact?: boolean }) {
         >
           {CORE_LABEL[state]}
         </span>
-        {!compact && (
-          <span className="mt-1 px-2 text-[11px] text-muted-foreground">{detail}</span>
-        )}
+        {!compact && <span className="mt-1 px-2 text-[11px] text-muted-foreground">{detail}</span>}
       </div>
 
       {!compact && (

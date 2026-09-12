@@ -8,15 +8,7 @@ import { coreStore, CORE_LABEL } from "@/lib/jarvis/core";
 import { settingsStore } from "@/lib/jarvis/settings";
 import { cn } from "@/lib/utils";
 
-function Pill({
-  label,
-  ok,
-  icon,
-}: {
-  label: string;
-  ok: boolean;
-  icon?: React.ReactNode;
-}) {
+function Pill({ label, ok, icon }: { label: string; ok: boolean; icon?: React.ReactNode }) {
   return (
     <span
       className={cn(
@@ -82,11 +74,7 @@ export function HeaderBar({ onMenu }: { onMenu: () => void }) {
           label={privileged ? "دسترسی باز" : "دسترسی محدود"}
           ok={privileged}
           icon={
-            privileged ? (
-              <ShieldCheck className="size-3" />
-            ) : (
-              <ShieldAlert className="size-3" />
-            )
+            privileged ? <ShieldCheck className="size-3" /> : <ShieldAlert className="size-3" />
           }
         />
       </div>
@@ -95,10 +83,7 @@ export function HeaderBar({ onMenu }: { onMenu: () => void }) {
         <span className="hidden text-[11px] tracking-widest text-muted-foreground sm:inline">
           {CORE_LABEL[state]}
         </span>
-        <span
-          className="font-mono text-sm tabular-nums text-primary/90"
-          suppressHydrationWarning
-        >
+        <span className="font-mono text-sm tabular-nums text-primary/90" suppressHydrationWarning>
           {clock}
         </span>
       </div>

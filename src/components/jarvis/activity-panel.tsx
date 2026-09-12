@@ -79,9 +79,7 @@ export function ActivityPanel() {
             <span className="tabular-nums text-muted-foreground" suppressHydrationWarning>
               {new Date(e.at).toLocaleTimeString("fa-IR")}
             </span>
-            <span className={cn("shrink-0", LEVEL_CLASS[e.level])}>
-              [{SOURCE_LABEL[e.source]}]
-            </span>
+            <span className={cn("shrink-0", LEVEL_CLASS[e.level])}>[{SOURCE_LABEL[e.source]}]</span>
             <span className="min-w-0 flex-1 font-sans break-words">{e.message}</span>
           </li>
         ))}

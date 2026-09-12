@@ -151,9 +151,7 @@ export function JarvisProvider({ children }: { children: ReactNode }) {
             ),
         );
         setMessages((prev) =>
-          prev.map((m) =>
-            m.id === assistantId ? { ...m, content: answer, pending: false } : m,
-          ),
+          prev.map((m) => (m.id === assistantId ? { ...m, content: answer, pending: false } : m)),
         );
         log("ai", "پاسخ دریافت شد", "success");
         setCoreState("IDLE");

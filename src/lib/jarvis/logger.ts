@@ -9,11 +9,7 @@ const MAX = 300;
 
 export const logStore = createStore<LogShape>("jarvis.activity", { entries: [] });
 
-export function log(
-  source: LogSource,
-  message: string,
-  level: LogLevel = "info",
-): LogEntry {
+export function log(source: LogSource, message: string, level: LogLevel = "info"): LogEntry {
   const entry: LogEntry = { id: uid(), at: Date.now(), source, level, message };
   logStore.set((prev) => ({ entries: [entry, ...prev.entries].slice(0, MAX) }));
   return entry;

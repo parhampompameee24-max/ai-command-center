@@ -25,13 +25,7 @@ export const NAV_ITEMS: {
   { id: "settings", label: "تنظیمات", hint: "پیکربندی", icon: SettingsIcon },
 ];
 
-export function SideNav({
-  active,
-  onSelect,
-}: {
-  active: ViewId;
-  onSelect: (id: ViewId) => void;
-}) {
+export function SideNav({ active, onSelect }: { active: ViewId; onSelect: (id: ViewId) => void }) {
   return (
     <nav className="flex flex-col gap-1.5" aria-label="بخش‌های اصلی">
       {NAV_ITEMS.map((item) => {

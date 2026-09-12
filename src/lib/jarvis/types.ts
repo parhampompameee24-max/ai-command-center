@@ -1,10 +1,4 @@
-export type CoreState =
-  | "IDLE"
-  | "LISTENING"
-  | "THINKING"
-  | "SPEAKING"
-  | "ERROR"
-  | "OFFLINE";
+export type CoreState = "IDLE" | "LISTENING" | "THINKING" | "SPEAKING" | "ERROR" | "OFFLINE";
 
 export type PermissionTier = "PUBLIC" | "SAFE" | "CONFIRM" | "PRIVILEGED" | "BLOCKED";
 

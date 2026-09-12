@@ -31,10 +31,7 @@ export function VoicePanel() {
           type="button"
           onClick={toggleListening}
           disabled={!supportsVoice}
-          className={cn(
-            "size-14 shrink-0 rounded-full",
-            listening && "animate-pulse-ring",
-          )}
+          className={cn("size-14 shrink-0 rounded-full", listening && "animate-pulse-ring")}
           variant={listening ? "default" : "secondary"}
           aria-pressed={listening}
           aria-label={listening ? "توقف شنیدن" : "شروع شنیدن"}
@@ -43,9 +40,7 @@ export function VoicePanel() {
         </Button>
 
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium">
-            {listening ? "در حال شنیدن…" : "میکروفن خاموش است"}
-          </p>
+          <p className="text-sm font-medium">{listening ? "در حال شنیدن…" : "میکروفن خاموش است"}</p>
           <p className="text-[11px] text-muted-foreground">
             {supportsVoice
               ? "برای گفتن دستور روی میکروفن بزنید."
@@ -53,21 +48,13 @@ export function VoicePanel() {
           </p>
         </div>
 
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          onClick={stopVoice}
-          aria-label="قطع صدا"
-        >
+        <Button type="button" variant="ghost" size="icon" onClick={stopVoice} aria-label="قطع صدا">
           <Square className="size-4" />
         </Button>
       </div>
 
       <div className="min-h-16 rounded-md border border-border/70 bg-background/50 p-3">
-        <p className="mb-1 text-[10px] tracking-[0.2em] text-steel uppercase">
-          متن شنیده‌شده
-        </p>
+        <p className="mb-1 text-[10px] tracking-[0.2em] text-steel uppercase">متن شنیده‌شده</p>
         <p className="text-sm break-words">
           {transcript || <span className="text-muted-foreground">—</span>}
         </p>

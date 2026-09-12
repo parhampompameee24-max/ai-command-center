@@ -11,12 +11,7 @@ function Row({ row }: { row: SystemRow }) {
   return (
     <div className="flex items-center justify-between gap-3 border-b border-border/50 py-2 last:border-0">
       <span className="text-sm text-muted-foreground">{row.label}</span>
-      <span
-        className={cn(
-          "font-mono text-xs",
-          row.available ? "text-primary" : "text-steel",
-        )}
-      >
+      <span className={cn("font-mono text-xs", row.available ? "text-primary" : "text-steel")}>
         {row.value}
       </span>
     </div>
@@ -74,20 +69,14 @@ export function SystemPanel() {
               className="flex items-center justify-between rounded-md border border-border/60 px-3 py-2"
             >
               <span className="text-sm">{b.name}</span>
-              <span
-                className={cn(
-                  "text-xs",
-                  b.ok ? "text-primary" : "text-steel",
-                )}
-              >
+              <span className={cn("text-xs", b.ok ? "text-primary" : "text-steel")}>
                 {b.ok ? "متصل" : "متصل نیست"}
               </span>
             </div>
           ))}
           <p className="text-[11px] leading-5 text-muted-foreground">
-            مرورگر اجازهٔ خواندن پردازنده، رم یا فایل‌های دستگاه را نمی‌دهد. این بخش‌ها
-            هیچ عدد ساختگی نشان نمی‌دهند و تنها با نصب یک برنامهٔ کمکی روی ویندوز یا
-            اندروید فعال می‌شوند.
+            مرورگر اجازهٔ خواندن پردازنده، رم یا فایل‌های دستگاه را نمی‌دهد. این بخش‌ها هیچ عدد
+            ساختگی نشان نمی‌دهند و تنها با نصب یک برنامهٔ کمکی روی ویندوز یا اندروید فعال می‌شوند.
           </p>
         </HudPanel>
       </div>

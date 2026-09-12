@@ -44,12 +44,7 @@ export function MemoryPanel() {
         subtitle={`${items.length} مورد ذخیره شده`}
         bodyClassName="space-y-3"
         actions={
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => clearMemory()}
-            disabled={!items.length}
-          >
+          <Button variant="ghost" size="sm" onClick={() => clearMemory()} disabled={!items.length}>
             پاک کردن همه
           </Button>
         }
@@ -61,10 +56,7 @@ export function MemoryPanel() {
             placeholder="جست‌وجو در حافظه…"
             className="bg-background/60"
           />
-          <Select
-            value={filter}
-            onValueChange={(v) => setFilter(v as MemoryKind | "all")}
-          >
+          <Select value={filter} onValueChange={(v) => setFilter(v as MemoryKind | "all")}>
             <SelectTrigger className="sm:w-40">
               <SelectValue />
             </SelectTrigger>
@@ -86,18 +78,12 @@ export function MemoryPanel() {
             </li>
           )}
           {visible.map((item) => (
-            <li
-              key={item.id}
-              className="rounded-md border border-border/60 bg-background/40 p-3"
-            >
+            <li key={item.id} className="rounded-md border border-border/60 bg-background/40 p-3">
               <div className="mb-1 flex items-center justify-between gap-2">
                 <span className="rounded-full border border-primary/40 px-2 py-0.5 text-[10px] text-primary">
                   {MEMORY_LABEL[item.kind]}
                 </span>
-                <span
-                  className="text-[10px] text-muted-foreground"
-                  suppressHydrationWarning
-                >
+                <span className="text-[10px] text-muted-foreground" suppressHydrationWarning>
                   {new Date(item.at).toLocaleString("fa-IR")}
                 </span>
               </div>

@@ -26,9 +26,7 @@ export function HudPanel({
                 {title}
               </h2>
             )}
-            {subtitle && (
-              <p className="truncate text-[11px] text-muted-foreground">{subtitle}</p>
-            )}
+            {subtitle && <p className="truncate text-[11px] text-muted-foreground">{subtitle}</p>}
           </div>
           {actions && <div className="flex shrink-0 items-center gap-2">{actions}</div>}
         </header>

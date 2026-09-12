@@ -31,8 +31,7 @@ export function createStore<T extends object>(key: string | null, initial: T): S
   return {
     get: () => state,
     set(updater) {
-      const next =
-        typeof updater === "function" ? (updater as (prev: T) => T)(state) : updater;
+      const next = typeof updater === "function" ? (updater as (prev: T) => T)(state) : updater;
       if (next === state) return;
       state = next;
       persist();
@@ -58,5 +57,4 @@ export function createStore<T extends object>(key: string | null, initial: T): S
   };
 }
 
-export const uid = () =>
-  `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+export const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
